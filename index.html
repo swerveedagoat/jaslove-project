@@ -16,10 +16,16 @@
         --purple-soft: #4d4159;
         --text: #e3dde2;
         --text-dim: #9c93a0;
+        
+        /* Freaky Corner Special Colors */
+        --freaky-red: #8b0000;
+        --freaky-red-glow: rgba(139, 0, 0, 0.45);
+        --freaky-bg: #120306;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Quicksand', sans-serif; }
-    html, body { background: #06050a; }
+    html { background: #06050a; }
     body {
+        background: #06050a;
         color: var(--text);
         min-height: 100vh;
         display: flex;
@@ -28,6 +34,11 @@
         padding: 40px 20px;
         position: relative;
         overflow-x: hidden;
+        transition: background 0.8s ease; /* Smooth background tint shift */
+    }
+
+    body.freaky-theme {
+        background: var(--freaky-bg);
     }
 
     /* ---------- HOME PAGE ---------- */
@@ -149,7 +160,7 @@
         border: 2px solid var(--panel-border);
         border-radius: 14px;
         padding: 18px 20px;
-        transition: border-color 0.25s ease;
+        transition: all 0.3s ease;
     }
     .entry-card:hover { border-color: var(--purple); }
 
@@ -208,6 +219,28 @@
         margin-top: 12px;
     }
 
+    /* ---------- FREAKY CORNER SPECIAL STYLES ---------- */
+    #page12 .page-title {
+        color: #ff4d4d;
+        text-shadow: 0 0 12px rgba(139, 0, 0, 0.7);
+    }
+    #page12 .back-btn:hover {
+        border-color: #ff4d4d;
+        color: #ff4d4d;
+    }
+    #page12 .entry-card {
+        border-color: rgba(139, 0, 0, 0.6);
+        box-shadow: 0 0 20px var(--freaky-red-glow), inset 0 0 15px rgba(139, 0, 0, 0.2);
+    }
+    #page12 .entry-card:hover {
+        border-color: #ff3333;
+        box-shadow: 0 0 25px rgba(255, 51, 51, 0.5), inset 0 0 20px rgba(139, 0, 0, 0.3);
+    }
+    #page12 .media-placeholder {
+        border-color: rgba(139, 0, 0, 0.5);
+        background: #17090c;
+    }
+
     /* ---------- JOURNAL / NOTES PAGE ---------- */
     .author-toggle {
         display: flex;
@@ -224,7 +257,7 @@
         font-weight: 600;
         font-size: 0.85rem;
         font-family: 'Quicksand', sans-serif;
-        transition: all 0.2s ease;
+        transition: all 0.25s ease;
     }
     .author-btn:hover { border-color: var(--purple); }
     .author-btn.active {
@@ -319,7 +352,6 @@
         inset: 0;
         overflow: hidden;
         z-index: 0;
-        background: #020207;
         pointer-events: none;
     }
 
@@ -364,20 +396,26 @@
                 <div class="envelope-label">🥺 Open when you're sad</div>
             </div>
 
-            <!-- Envelope 4 (NEW) -->
+            <!-- Envelope 4 -->
             <div class="envelope-container" onclick="goTo('page9')">
                 <div class="envelope"></div>
                 <div class="envelope-label">🩹 Open when you want reassurance</div>
             </div>
-            <!-- Envelope 5 (NEW) -->
+            <!-- Envelope 5 -->
             <div class="envelope-container" onclick="goTo('page10')">
                 <div class="envelope"></div>
                 <div class="envelope-label">😰 Open when you're stressed</div>
             </div>
-            <!-- Envelope 6 (NEW) -->
+            <!-- Envelope 6 -->
             <div class="envelope-container" onclick="goTo('page11')">
                 <div class="envelope"></div>
                 <div class="envelope-label">🩸 Open when you're on your period</div>
+            </div>
+
+            <!-- Envelope 7 (Freaky Corner) -->
+            <div class="envelope-container" onclick="goTo('page12')">
+                <div class="envelope"></div>
+                <div class="envelope-label">😏 Freaky corner (open when youre aloneee) 😉</div>
             </div>
 
             <!-- Remaining Envelopes -->
@@ -460,7 +498,7 @@
         </div>
     </div>
 
-    <!-- PAGE 9: Open when you want reassurance (NEW) -->
+    <!-- PAGE 9: Open when you want reassurance -->
     <div id="page9" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">🩹 Open when you want reassurance</div>
@@ -482,7 +520,7 @@
         </div>
     </div>
 
-    <!-- PAGE 10: Open when you're stressed (NEW) -->
+    <!-- PAGE 10: Open when you're stressed -->
     <div id="page10" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">😰 Open when you're stressed</div>
@@ -502,7 +540,7 @@
         </div>
     </div>
 
-    <!-- PAGE 11: Open when you're on your period (NEW) -->
+    <!-- PAGE 11: Open when you're on your period -->
     <div id="page11" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">🩸 Open when you're on your period</div>
@@ -547,6 +585,25 @@
             <!-- New area for text at the end -->
             <div class="entry-card">
                 <div class="entry-text" style="margin-bottom: 0;">Type your closing note/text here...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 12: Freaky corner -->
+    <div id="page12" class="page">
+        <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
+        <div class="page-title">😏 Freaky corner (open when youre aloneee) 😉</div>
+        <div class="page-subtitle">make sure nobody is looking over your shoulder...</div>
+        <div class="entry-list">
+            <div class="entry-card">
+                <div class="entry-text">Type your message here...</div>
+
+                <div class="photo-grid">
+                    <div class="media-placeholder">Photo 1</div>
+                    <div class="media-placeholder">Photo 2</div>
+                    <div class="media-placeholder">Photo 3</div>
+                    <div class="media-placeholder">Photo 4</div>
+                </div>
             </div>
         </div>
     </div>
@@ -690,6 +747,14 @@
         function goTo(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
+            
+            // Smooth red dark background toggle for freaky section
+            if (pageId === 'page12') {
+                document.body.classList.add('freaky-theme');
+            } else {
+                document.body.classList.remove('freaky-theme');
+            }
+
             window.scrollTo(0, 0);
             if (pageId === 'page7') loadNotes();
         }
