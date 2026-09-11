@@ -17,15 +17,23 @@
         --text: #e3dde2;
         --text-dim: #9c93a0;
         
-        /* Freaky Corner Special Colors */
-        --freaky-red: #8b0000;
-        --freaky-red-glow: rgba(139, 0, 0, 0.45);
-        --freaky-bg: #120306;
+        /* Freaky Section Red Accent Vars */
+        --red-glow: #8b0000;
+        --red-border: #5c141e;
+        --red-light: #e63946;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Quicksand', sans-serif; }
-    html { background: #06050a; }
+    
+    html, body { 
+        background: #06050a; 
+        transition: background 0.8s ease; 
+    }
+    
+    body.freaky-theme {
+        background: #0c0204;
+    }
+
     body {
-        background: #06050a;
         color: var(--text);
         min-height: 100vh;
         display: flex;
@@ -34,11 +42,6 @@
         padding: 40px 20px;
         position: relative;
         overflow-x: hidden;
-        transition: background 0.8s ease; /* Smooth background tint shift */
-    }
-
-    body.freaky-theme {
-        background: var(--freaky-bg);
     }
 
     /* ---------- HOME PAGE ---------- */
@@ -73,6 +76,22 @@
         border-color: var(--pink-soft);
         transform: translateY(-5px);
         box-shadow: 0 8px 22px rgba(107, 91, 129, 0.25);
+    }
+
+    /* Freaky Corner Envelope Custom Ambient Glow */
+    .envelope-container.freaky-card {
+        border-color: var(--red-border);
+        box-shadow: 0 0 15px rgba(139, 0, 0, 0.35), 0 4px 12px rgba(0,0,0,0.5);
+    }
+    .envelope-container.freaky-card:hover {
+        border-color: var(--red-light);
+        box-shadow: 0 0 25px rgba(230, 57, 70, 0.5), 0 8px 22px rgba(139, 0, 0, 0.4);
+    }
+    .envelope-container.freaky-card .envelope::before {
+        border-top-color: #4a121a;
+    }
+    .envelope-container.freaky-card:hover .envelope::before {
+        border-top-color: var(--red-light);
     }
 
     .envelope {
@@ -149,6 +168,15 @@
         text-shadow: 0 2px 8px rgba(0,0,0,0.6);
     }
 
+    #page12 .page-title {
+        color: var(--red-light);
+        text-shadow: 0 2px 14px rgba(230, 57, 70, 0.4);
+    }
+    #page12 .entry-card {
+        border-color: var(--red-border);
+        box-shadow: 0 0 20px rgba(139, 0, 0, 0.25);
+    }
+
     .entry-list {
         display: flex;
         flex-direction: column;
@@ -160,7 +188,7 @@
         border: 2px solid var(--panel-border);
         border-radius: 14px;
         padding: 18px 20px;
-        transition: all 0.3s ease;
+        transition: border-color 0.25s ease, box-shadow 0.25s ease;
     }
     .entry-card:hover { border-color: var(--purple); }
 
@@ -205,7 +233,6 @@
         margin-top: 12px;
     }
 
-    /* Multi-media layout helpers */
     .photo-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -217,28 +244,6 @@
         flex-wrap: wrap;
         gap: 12px;
         margin-top: 12px;
-    }
-
-    /* ---------- FREAKY CORNER SPECIAL STYLES ---------- */
-    #page12 .page-title {
-        color: #ff4d4d;
-        text-shadow: 0 0 12px rgba(139, 0, 0, 0.7);
-    }
-    #page12 .back-btn:hover {
-        border-color: #ff4d4d;
-        color: #ff4d4d;
-    }
-    #page12 .entry-card {
-        border-color: rgba(139, 0, 0, 0.6);
-        box-shadow: 0 0 20px var(--freaky-red-glow), inset 0 0 15px rgba(139, 0, 0, 0.2);
-    }
-    #page12 .entry-card:hover {
-        border-color: #ff3333;
-        box-shadow: 0 0 25px rgba(255, 51, 51, 0.5), inset 0 0 20px rgba(139, 0, 0, 0.3);
-    }
-    #page12 .media-placeholder {
-        border-color: rgba(139, 0, 0, 0.5);
-        background: #17090c;
     }
 
     /* ---------- JOURNAL / NOTES PAGE ---------- */
@@ -333,7 +338,7 @@
         white-space: pre-wrap;
     }
 
-    /* ---------- PLAYLISTS PAGE ---------- */
+    /* ---------- PLAYLISTS PAGE CARD STYLES ---------- */
     .playlist-block { margin-bottom: 30px; }
     .playlist-label {
         color: var(--pink);
@@ -341,9 +346,47 @@
         margin-bottom: 10px;
         font-size: 1rem;
     }
-    .playlist-block iframe {
-        border-radius: 14px;
+    
+    .playlist-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: rgba(26, 23, 32, 0.72);
+        backdrop-filter: blur(6px);
         border: 2px solid var(--panel-border);
+        border-radius: 16px;
+        padding: 14px 18px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+    }
+    .playlist-card:hover {
+        border-color: var(--pink-soft);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 22px rgba(107, 91, 129, 0.25);
+    }
+    .playlist-cover {
+        width: 85px;
+        height: 85px;
+        border-radius: 10px;
+        object-fit: cover;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    .playlist-info {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .playlist-name {
+        color: var(--text);
+        font-size: 1.05rem;
+        font-weight: 700;
+        line-height: 1.3;
+    }
+    .playlist-sub {
+        color: var(--pink);
+        font-size: 0.85rem;
+        font-weight: 600;
     }
 
     /* ---------- STILL SPACE BACKGROUND ---------- */
@@ -352,7 +395,13 @@
         inset: 0;
         overflow: hidden;
         z-index: 0;
+        background: #020207;
         pointer-events: none;
+        transition: background 0.8s ease;
+    }
+
+    body.freaky-theme .space-bg {
+        background: radial-gradient(circle at center, #2e0509 0%, #050002 100%);
     }
 
     .stars {
@@ -380,45 +429,34 @@
             <p>HII PRINCESS,hope you have fun with theseee.</p>
         </header>
         <div class="vault-grid">
-            <!-- Envelope 1 -->
             <div class="envelope-container" onclick="goTo('page1')">
                 <div class="envelope"></div>
                 <div class="envelope-label">🥱 Open when you're sleepy</div>
             </div>
-            <!-- Envelope 2 -->
             <div class="envelope-container" onclick="goTo('page5')">
                 <div class="envelope"></div>
                 <div class="envelope-label">😠 Open when you're mad at me</div>
             </div>
-            <!-- Envelope 3 -->
             <div class="envelope-container" onclick="goTo('page6')">
                 <div class="envelope"></div>
                 <div class="envelope-label">🥺 Open when you're sad</div>
             </div>
-
-            <!-- Envelope 4 -->
             <div class="envelope-container" onclick="goTo('page9')">
                 <div class="envelope"></div>
                 <div class="envelope-label">🩹 Open when you want reassurance</div>
             </div>
-            <!-- Envelope 5 -->
             <div class="envelope-container" onclick="goTo('page10')">
                 <div class="envelope"></div>
                 <div class="envelope-label">😰 Open when you're stressed</div>
             </div>
-            <!-- Envelope 6 -->
             <div class="envelope-container" onclick="goTo('page11')">
                 <div class="envelope"></div>
                 <div class="envelope-label">🩸 Open when you're on your period</div>
             </div>
-
-            <!-- Envelope 7 (Freaky Corner) -->
-            <div class="envelope-container" onclick="goTo('page12')">
+            <div class="envelope-container freaky-card" onclick="goTo('page12')">
                 <div class="envelope"></div>
                 <div class="envelope-label">😏 Freaky corner (open when youre aloneee) 😉</div>
             </div>
-
-            <!-- Remaining Envelopes -->
             <div class="envelope-container" onclick="goTo('page2')">
                 <div class="envelope"></div>
                 <div class="envelope-label">🎧 When you want to hear my voice</div>
@@ -442,7 +480,7 @@
         </div>
     </div>
 
-    <!-- PAGE 1: Open when you're sleepy -->
+    <!-- PAGE 1: Sleepy -->
     <div id="page1" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">🥱 Open when you're sleepy</div>
@@ -450,19 +488,15 @@
         <div class="entry-list">
             <div class="entry-card">
                 <div class="entry-text">HII.PRINCESSS,I knowwww sometimes you just cant sleep,maybe youre stressed,anxious,lost in thought,or youre here to listen to your favourite story teller and yapper..anyways,pleaseee knowww that whatever you may be going through is one terrible moment in a jar filled with amazing moments.calm down im here for you and im not going anywhere. breathe slowly  and exhale longer than you inhaled try drinking a warm glass of milk it may help. tossing and turning isnt the solution its best if you get up and do a quick activity then go back again.</div>
-                
                 <img src="images/sleepy.jpg" style="width: 110px; height: 110px; object-fit: contain;">
-
                 <div class="entry-media">
-                    <audio controls style="margin-top: 10px;">
-                        <source src="" type="audio/mpeg">
-                    </audio>
+                    <audio controls style="margin-top: 10px;"><source src="" type="audio/mpeg"></audio>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- PAGE 5: Open when you're mad at me -->
+    <!-- PAGE 5: Mad -->
     <div id="page5" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">😠 Open when you're mad at me</div>
@@ -470,19 +504,15 @@
         <div class="entry-list">
             <div class="entry-card">
                 <div class="entry-text">hehehee...hiiii my loveee,judging by the reason why im writing this i made you mad...maybe its something i didnt notice,it couldve went over my head maybe im just slow and stupid sometimes. maybe its something i said. whatever it was please tell the present me youre mad im so freaking slow.in advance, i apologise profusely for what i did,i wouldnt ever want to make you mad or upset,youre my little angel afterall.i loveeee youuuu soooo muchhh FORGIVE ME PLEASE I'LL ALWAYS FIGHT FOR YOU</div>
-                
                 <div class="media-placeholder">Photo goes here</div>
-
                 <div class="entry-media">
-                    <audio controls style="margin-top: 10px;">
-                        <source src="" type="audio/mpeg">
-                    </audio>
+                    <audio controls style="margin-top: 10px;"><source src="" type="audio/mpeg"></audio>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- PAGE 6: Open when you're sad -->
+    <!-- PAGE 6: Sad -->
     <div id="page6" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">🥺 Open when you're sad</div>
@@ -490,15 +520,13 @@
         <div class="entry-list">
             <div class="entry-card">
                 <div class="entry-text">heyyyy thereeee,why the grumpy faceeee.sad and princess dont go well together babyyyy.there is nothing in this world that deserves your tears except obviously your family and me but other than that any situation any experince it will pass i promise you. any sad moment will be nothing when you go back and remember what happened during this year calm downnnn,breatheeee,wash your faceee,hit the present me up ask for food ask for money ask for anything and i promise ill answer.</div>
-                
                 <div class="media-placeholder">Normal Photo goes here</div>
-                
-               <img src="images/sad.jpg" style="width: 110px; height: 110px; object-fit: contain;">
+                <img src="images/sad.jpg" style="width: 110px; height: 110px; object-fit: contain;">
             </div>
         </div>
     </div>
 
-    <!-- PAGE 9: Open when you want reassurance -->
+    <!-- PAGE 9: Reassurance -->
     <div id="page9" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">🩹 Open when you want reassurance</div>
@@ -506,21 +534,17 @@
         <div class="entry-list">
             <div class="entry-card">
                 <div class="entry-text">greethingsss,my queeennnn.did you know black widows eat their husbands after mating. shiiii i wouldnt mind if you ate me after mateddddd. jasmineeeee,my love,my princess,my everything.please dont ever think that i would hate you,fall out of love,think about someone else,i only dearly want you.i dont want anyone else in this life, i want my kids to be as stuborn as you i want them to have your eyes i want them to be as short as you i want them to eat sushi for breakfast.i truly only love you and i will continue to show my love til the day i die and im buried next to you</div>
-                
-                <!-- 3 normal pictures grid -->
                 <div class="photo-grid">
                     <div class="media-placeholder">Photo 1</div>
                     <div class="media-placeholder">Photo 2</div>
                     <div class="media-placeholder">Photo 3</div>
                 </div>
-
-                <!-- Single picture alone below -->
                 <div class="media-placeholder" style="margin-top: 12px;">Photo 4 (Alone)</div>
             </div>
         </div>
     </div>
 
-    <!-- PAGE 10: Open when you're stressed -->
+    <!-- PAGE 10: Stressed -->
     <div id="page10" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">😰 Open when you're stressed</div>
@@ -528,25 +552,20 @@
         <div class="entry-list">
             <div class="entry-card">
                 <div class="entry-text">woah woah woah there,calm downnn whats all the fuss aboutttt. its going to be alllll okay baby just breathe deeply,wash your face,call me up,let me calm you down. your stress will make you only make bad choices okay? calm down firstttt and once you do you'll find everything easier.dont hesistate to ask for my help please,even if i cant directly help you and fix it,i can be there for you, talk to you,and comfort you</div>
-                
                 <div class="entry-media">
-                    <audio controls style="margin-top: 10px;">
-                        <source src="" type="audio/mpeg">
-                    </audio>
+                    <audio controls style="margin-top: 10px;"><source src="" type="audio/mpeg"></audio>
                 </div>
-
                 <img src="images/stressed.jpg" style="width: 110px; height: 110px; object-fit: contain;">
             </div>
         </div>
     </div>
 
-    <!-- PAGE 11: Open when you're on your period -->
+    <!-- PAGE 11: Period -->
     <div id="page11" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">🩸 Open when you're on your period</div>
         <div class="page-subtitle">LEMME AT IT,NO ONE HURTS MY GIRL. HERES SOMETHINGS THAT SHOULD HELP BABY DONT WORRY IM HERE</div>
         <div class="entry-list">
-            <!-- First block: 2 picture areas, then text under -->
             <div class="entry-card">
                 <div class="photo-grid">
                     <div class="media-placeholder">Photo 1</div>
@@ -554,8 +573,6 @@
                 </div>
                 <div class="entry-text" style="margin-top: 14px; margin-bottom: 0;">Type text under photos here...</div>
             </div>
-
-            <!-- Second block: Repeated identical layout -->
             <div class="entry-card">
                 <div class="photo-grid">
                     <div class="media-placeholder">Photo 3</div>
@@ -563,8 +580,6 @@
                 </div>
                 <div class="entry-text" style="margin-top: 14px; margin-bottom: 0;">Type text under photos here...</div>
             </div>
-
-            <!-- Small sticker-sized pictures with text under -->
             <div class="entry-card">
                 <div class="sticker-grid">
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
@@ -581,8 +596,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- New area for text at the end -->
             <div class="entry-card">
                 <div class="entry-text" style="margin-bottom: 0;">Type your closing note/text here...</div>
             </div>
@@ -597,7 +610,6 @@
         <div class="entry-list">
             <div class="entry-card">
                 <div class="entry-text">Type your message here...</div>
-
                 <div class="photo-grid">
                     <div class="media-placeholder">Photo 1</div>
                     <div class="media-placeholder">Photo 2</div>
@@ -616,27 +628,15 @@
         <div class="entry-list">
             <div class="entry-card">
                 <div class="entry-text">text1</div>
-                <div class="entry-media">
-                    <audio controls>
-                        <source src="" type="audio/mpeg">
-                    </audio>
-                </div>
+                <div class="entry-media"><audio controls><source src="" type="audio/mpeg"></audio></div>
             </div>
             <div class="entry-card">
                 <div class="entry-text">text2</div>
-                <div class="entry-media">
-                    <audio controls>
-                        <source src="" type="audio/mpeg">
-                    </audio>
-                </div>
+                <div class="entry-media"><audio controls><source src="" type="audio/mpeg"></audio></div>
             </div>
             <div class="entry-card">
                 <div class="entry-text">text3</div>
-                <div class="entry-media">
-                    <audio controls>
-                        <source src="" type="audio/mpeg">
-                    </audio>
-                </div>
+                <div class="entry-media"><audio controls><source src="" type="audio/mpeg"></audio></div>
             </div>
         </div>
     </div>
@@ -649,21 +649,15 @@
         <div class="entry-list">
             <div class="entry-card">
                 <div class="entry-text">text1</div>
-                <div class="entry-media">
-                    <div class="media-placeholder">photo1 goes here</div>
-                </div>
+                <div class="entry-media"><div class="media-placeholder">photo1 goes here</div></div>
             </div>
             <div class="entry-card">
                 <div class="entry-text">text2</div>
-                <div class="entry-media">
-                    <div class="media-placeholder">photo2 goes here</div>
-                </div>
+                <div class="entry-media"><div class="media-placeholder">photo2 goes here</div></div>
             </div>
             <div class="entry-card">
                 <div class="entry-text">text3</div>
-                <div class="entry-media">
-                    <div class="media-placeholder">photo3 goes here</div>
-                </div>
+                <div class="entry-media"><div class="media-placeholder">photo3 goes here</div></div>
             </div>
         </div>
     </div>
@@ -697,7 +691,7 @@
         <div class="notes-list" id="notesList"></div>
     </div>
 
-    <!-- PAGE 8: Playlists -->
+    <!-- PAGE 8: Playlists (Updated with oEmbed Containers) -->
     <div id="page8" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">Our playlists</div>
@@ -705,12 +699,12 @@
 
         <div class="playlist-block">
             <div class="playlist-label">Reminds me of you</div>
-            <iframe style="border-radius:14px" src="https://open.spotify.com/embed/playlist/PLAYLIST_ID_1?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <div id="playlist1"></div>
         </div>
 
         <div class="playlist-block">
             <div class="playlist-label">Songs we both love</div>
-            <iframe style="border-radius:14px" src="https://open.spotify.com/1h0sMcUv8B0dsci2OBJJZl/playlist/PLAYLIST_ID_2?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <div id="playlist2"></div>
         </div>
     </div>
 
@@ -748,7 +742,6 @@
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
             
-            // Smooth red dark background toggle for freaky section
             if (pageId === 'page12') {
                 document.body.classList.add('freaky-theme');
             } else {
@@ -758,6 +751,30 @@
             window.scrollTo(0, 0);
             if (pageId === 'page7') loadNotes();
         }
+
+        // ---------- Spotify Playlist Cards (oEmbed) ----------
+        async function loadPlaylistCard(containerId, playlistUrl) {
+            try {
+                const res = await fetch(`https://open.spotify.com/oembed?url=${encodeURIComponent(playlistUrl)}`);
+                const data = await res.json();
+                document.getElementById(containerId).innerHTML = `
+                    <a href="${playlistUrl}" target="_blank" class="playlist-card">
+                        <img src="${data.thumbnail_url}" class="playlist-cover">
+                        <div class="playlist-info">
+                            <div class="playlist-name">${data.title}</div>
+                            <div class="playlist-sub">open in spotify →</div>
+                        </div>
+                    </a>`;
+            } catch (e) {
+                document.getElementById(containerId).innerHTML = `<div class="media-placeholder"><a href="${playlistUrl}" target="_blank" style="color:var(--pink);text-decoration:none;">Open Playlist on Spotify →</a></div>`;
+            }
+        }
+
+        // Load your first playlist automatically
+        loadPlaylistCard('playlist1', 'https://open.spotify.com/playlist/1h0sMcUv8B0dsci2OBJJZl');
+        
+        // Add your second playlist URL here when ready:
+        loadPlaylistCard('playlist2', 'https://open.spotify.com/playlist/YOUR_SECOND_PLAYLIST_ID');
 
         function getNotes() {
             try {
