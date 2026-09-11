@@ -691,7 +691,7 @@
         <div class="notes-list" id="notesList"></div>
     </div>
 
-    <!-- PAGE 8: Playlists (Updated with oEmbed Containers) -->
+    <!-- PAGE 8: Playlists -->
     <div id="page8" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">Our playlists</div>
@@ -754,6 +754,10 @@
 
         // ---------- Spotify Playlist Cards (oEmbed) ----------
         async function loadPlaylistCard(containerId, playlistUrl) {
+            if (!playlistUrl || playlistUrl.includes('YOUR_FIRST_PLAYLIST_ID')) {
+                document.getElementById(containerId).innerHTML = `<div class="media-placeholder">Playlist coming soon 🤍</div>`;
+                return;
+            }
             try {
                 const res = await fetch(`https://open.spotify.com/oembed?url=${encodeURIComponent(playlistUrl)}`);
                 const data = await res.json();
@@ -770,11 +774,11 @@
             }
         }
 
-        // Load your first playlist automatically
-        loadPlaylistCard('playlist1', 'https://open.spotify.com/playlist/1h0sMcUv8B0dsci2OBJJZl');
+        // Reminds me of you (Add your playlist link here when ready)
+        loadPlaylistCard('playlist1', 'https://open.spotify.com/playlist/YOUR_FIRST_PLAYLIST_ID');
         
-        // Add your second playlist URL here when ready:
-        loadPlaylistCard('playlist2', 'https://open.spotify.com/playlist/YOUR_SECOND_PLAYLIST_ID');
+        // Songs we both love (Your playlist!)
+        loadPlaylistCard('playlist2', 'https://open.spotify.com/playlist/1h0sMcUv8B0dsci2OBJJZl');
 
         function getNotes() {
             try {
