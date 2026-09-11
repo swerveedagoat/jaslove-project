@@ -78,6 +78,7 @@
         box-shadow: 0 8px 22px rgba(107, 91, 129, 0.25);
     }
 
+    /* Freaky Corner Envelope Custom Ambient Glow */
     .envelope-container.freaky-card {
         border-color: var(--red-border);
         box-shadow: 0 0 15px rgba(139, 0, 0, 0.35), 0 4px 12px rgba(0,0,0,0.5);
@@ -167,7 +168,6 @@
         text-shadow: 0 2px 8px rgba(0,0,0,0.6);
     }
 
-    /* Freaky Page Styling Enhancements */
     #page12 .page-title {
         color: var(--red-light);
         text-shadow: 0 2px 14px rgba(230, 57, 70, 0.4);
@@ -175,16 +175,6 @@
     #page12 .entry-card {
         border-color: var(--red-border);
         box-shadow: 0 0 20px rgba(139, 0, 0, 0.25);
-    }
-
-    /* FREAKY CORNER TEXT HOVER EFFECT */
-    #page12 .entry-text {
-        transition: color 0.3s ease, text-shadow 0.3s ease;
-        cursor: pointer;
-    }
-    #page12 .entry-text:hover {
-        color: var(--red-light);
-        text-shadow: 0 0 10px rgba(230, 57, 70, 0.6);
     }
 
     .entry-list {
@@ -348,7 +338,7 @@
         white-space: pre-wrap;
     }
 
-    /* ---------- PLAYLISTS PAGE ---------- */
+    /* ---------- PLAYLISTS PAGE CARD STYLES ---------- */
     .playlist-block { margin-bottom: 30px; }
     .playlist-label {
         color: var(--pink);
@@ -356,9 +346,47 @@
         margin-bottom: 10px;
         font-size: 1rem;
     }
-    .playlist-block iframe {
-        border-radius: 14px;
+    
+    .playlist-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: rgba(26, 23, 32, 0.72);
+        backdrop-filter: blur(6px);
         border: 2px solid var(--panel-border);
+        border-radius: 16px;
+        padding: 14px 18px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+    }
+    .playlist-card:hover {
+        border-color: var(--pink-soft);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 22px rgba(107, 91, 129, 0.25);
+    }
+    .playlist-cover {
+        width: 85px;
+        height: 85px;
+        border-radius: 10px;
+        object-fit: cover;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    .playlist-info {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .playlist-name {
+        color: var(--text);
+        font-size: 1.05rem;
+        font-weight: 700;
+        line-height: 1.3;
+    }
+    .playlist-sub {
+        color: var(--pink);
+        font-size: 0.85rem;
+        font-weight: 600;
     }
 
     /* ---------- STILL SPACE BACKGROUND ---------- */
@@ -452,61 +480,39 @@
         </div>
     </div>
 
-    <!-- PAGE 12: Freaky corner -->
-    <div id="page12" class="page">
-        <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
-        <div class="page-title">😏 Freaky corner (open when youre aloneee) 😉</div>
-        <div class="page-subtitle">make sure nobody is looking over your shoulder...</div>
-        <div class="entry-list">
-            <div class="entry-card">
-                <div class="entry-text">Type your message here...</div>
-                <div class="photo-grid">
-                    <div class="media-placeholder">Photo 1</div>
-                    <div class="media-placeholder">Photo 2</div>
-                    <div class="media-placeholder">Photo 3</div>
-                    <div class="media-placeholder">Photo 4</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- PAGE 1 -->
+    <!-- PAGE 1: Sleepy -->
     <div id="page1" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">🥱 Open when you're sleepy</div>
         <div class="page-subtitle">better be sleeping on time,here is your knockout pill.</div>
         <div class="entry-list">
             <div class="entry-card">
-                <div class="entry-text">HII.PRINCESSS,I knowwww sometimes you just cant sleep,maybe youre stressed,anxious,lost in thought,or youre here to listen to your favourite story teller and yapper..anyways,pleaseee knowww that whatever you may be going through is one terrible moment in a jar filled with amazing moments.calm down im here for you and im not going anywhere. breathe slowly and exhale longer than you inhaled try drinking a warm glass of milk it may help. tossing and turning isnt the solution its best if you get up and do a quick activity then go back again.</div>
+                <div class="entry-text">HII.PRINCESSS,I knowwww sometimes you just cant sleep,maybe youre stressed,anxious,lost in thought,or youre here to listen to your favourite story teller and yapper..anyways,pleaseee knowww that whatever you may be going through is one terrible moment in a jar filled with amazing moments.calm down im here for you and im not going anywhere. breathe slowly  and exhale longer than you inhaled try drinking a warm glass of milk it may help. tossing and turning isnt the solution its best if you get up and do a quick activity then go back again.</div>
                 <img src="images/sleepy.jpg" style="width: 110px; height: 110px; object-fit: contain;">
                 <div class="entry-media">
-                    <audio controls style="margin-top: 10px;">
-                        <source src="" type="audio/mpeg">
-                    </audio>
+                    <audio controls style="margin-top: 10px;"><source src="" type="audio/mpeg"></audio>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- PAGE 5 -->
+    <!-- PAGE 5: Mad -->
     <div id="page5" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">😠 Open when you're mad at me</div>
         <div class="page-subtitle">i messed up didnt i...</div>
         <div class="entry-list">
             <div class="entry-card">
-                <div class="entry-text">hehehee...hiiii my loveee,judging by the reason why im writing this i made you mad...maybe its something i didnt notice,it couldve went over my head maybe im just slow and stupid sometimes. maybe its something i said. whatever it was please tell the present me youre mad im so freaking slow.in advance, i apologise profusely for what i did,i wouldnt ever want to make you mad or upset,youre my little angel afterall.i loveeee youuuu soooo muchhh FORGIVE ME PLEASE I'ALL ALWAYS FIGHT FOR YOU</div>
+                <div class="entry-text">hehehee...hiiii my loveee,judging by the reason why im writing this i made you mad...maybe its something i didnt notice,it couldve went over my head maybe im just slow and stupid sometimes. maybe its something i said. whatever it was please tell the present me youre mad im so freaking slow.in advance, i apologise profusely for what i did,i wouldnt ever want to make you mad or upset,youre my little angel afterall.i loveeee youuuu soooo muchhh FORGIVE ME PLEASE I'LL ALWAYS FIGHT FOR YOU</div>
                 <div class="media-placeholder">Photo goes here</div>
                 <div class="entry-media">
-                    <audio controls style="margin-top: 10px;">
-                        <source src="" type="audio/mpeg">
-                    </audio>
+                    <audio controls style="margin-top: 10px;"><source src="" type="audio/mpeg"></audio>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- PAGE 6 -->
+    <!-- PAGE 6: Sad -->
     <div id="page6" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">🥺 Open when you're sad</div>
@@ -515,12 +521,12 @@
             <div class="entry-card">
                 <div class="entry-text">heyyyy thereeee,why the grumpy faceeee.sad and princess dont go well together babyyyy.there is nothing in this world that deserves your tears except obviously your family and me but other than that any situation any experince it will pass i promise you. any sad moment will be nothing when you go back and remember what happened during this year calm downnnn,breatheeee,wash your faceee,hit the present me up ask for food ask for money ask for anything and i promise ill answer.</div>
                 <div class="media-placeholder">Normal Photo goes here</div>
-               <img src="images/sad.jpg" style="width: 110px; height: 110px; object-fit: contain;">
+                <img src="images/sad.jpg" style="width: 110px; height: 110px; object-fit: contain;">
             </div>
         </div>
     </div>
 
-    <!-- PAGE 9 -->
+    <!-- PAGE 9: Reassurance -->
     <div id="page9" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">🩹 Open when you want reassurance</div>
@@ -538,7 +544,7 @@
         </div>
     </div>
 
-    <!-- PAGE 10 -->
+    <!-- PAGE 10: Stressed -->
     <div id="page10" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">😰 Open when you're stressed</div>
@@ -547,16 +553,14 @@
             <div class="entry-card">
                 <div class="entry-text">woah woah woah there,calm downnn whats all the fuss aboutttt. its going to be alllll okay baby just breathe deeply,wash your face,call me up,let me calm you down. your stress will make you only make bad choices okay? calm down firstttt and once you do you'll find everything easier.dont hesistate to ask for my help please,even if i cant directly help you and fix it,i can be there for you, talk to you,and comfort you</div>
                 <div class="entry-media">
-                    <audio controls style="margin-top: 10px;">
-                        <source src="" type="audio/mpeg">
-                    </audio>
+                    <audio controls style="margin-top: 10px;"><source src="" type="audio/mpeg"></audio>
                 </div>
                 <img src="images/stressed.jpg" style="width: 110px; height: 110px; object-fit: contain;">
             </div>
         </div>
     </div>
 
-    <!-- PAGE 11 -->
+    <!-- PAGE 11: Period -->
     <div id="page11" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">🩸 Open when you're on your period</div>
@@ -598,7 +602,25 @@
         </div>
     </div>
 
-    <!-- PAGE 2 -->
+    <!-- PAGE 12: Freaky corner -->
+    <div id="page12" class="page">
+        <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
+        <div class="page-title">😏 Freaky corner (open when youre aloneee) 😉</div>
+        <div class="page-subtitle">make sure nobody is looking over your shoulder...</div>
+        <div class="entry-list">
+            <div class="entry-card">
+                <div class="entry-text">Type your message here...</div>
+                <div class="photo-grid">
+                    <div class="media-placeholder">Photo 1</div>
+                    <div class="media-placeholder">Photo 2</div>
+                    <div class="media-placeholder">Photo 3</div>
+                    <div class="media-placeholder">Photo 4</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: Hear my voice -->
     <div id="page2" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">When you want to hear my voice</div>
@@ -606,32 +628,20 @@
         <div class="entry-list">
             <div class="entry-card">
                 <div class="entry-text">text1</div>
-                <div class="entry-media">
-                    <audio controls>
-                        <source src="" type="audio/mpeg">
-                    </audio>
-                </div>
+                <div class="entry-media"><audio controls><source src="" type="audio/mpeg"></audio></div>
             </div>
             <div class="entry-card">
                 <div class="entry-text">text2</div>
-                <div class="entry-media">
-                    <audio controls>
-                        <source src="" type="audio/mpeg">
-                    </audio>
-                </div>
+                <div class="entry-media"><audio controls><source src="" type="audio/mpeg"></audio></div>
             </div>
             <div class="entry-card">
                 <div class="entry-text">text3</div>
-                <div class="entry-media">
-                    <audio controls>
-                        <source src="" type="audio/mpeg">
-                    </audio>
-                </div>
+                <div class="entry-media"><audio controls><source src="" type="audio/mpeg"></audio></div>
             </div>
         </div>
     </div>
 
-    <!-- PAGE 3 -->
+    <!-- PAGE 3: When you miss me -->
     <div id="page3" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">When you miss me</div>
@@ -639,26 +649,20 @@
         <div class="entry-list">
             <div class="entry-card">
                 <div class="entry-text">text1</div>
-                <div class="entry-media">
-                    <div class="media-placeholder">photo1 goes here</div>
-                </div>
+                <div class="entry-media"><div class="media-placeholder">photo1 goes here</div></div>
             </div>
             <div class="entry-card">
                 <div class="entry-text">text2</div>
-                <div class="entry-media">
-                    <div class="media-placeholder">photo2 goes here</div>
-                </div>
+                <div class="entry-media"><div class="media-placeholder">photo2 goes here</div></div>
             </div>
             <div class="entry-card">
                 <div class="entry-text">text3</div>
-                <div class="entry-media">
-                    <div class="media-placeholder">photo3 goes here</div>
-                </div>
+                <div class="entry-media"><div class="media-placeholder">photo3 goes here</div></div>
             </div>
         </div>
     </div>
 
-    <!-- PAGE 4 -->
+    <!-- PAGE 4: Distraction -->
     <div id="page4" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">toooo remember why i love youuuu</div>
@@ -670,7 +674,7 @@
         </div>
     </div>
 
-    <!-- PAGE 7 -->
+    <!-- PAGE 7: Journal / Notes -->
     <div id="page7" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">Leave me a little note</div>
@@ -687,7 +691,7 @@
         <div class="notes-list" id="notesList"></div>
     </div>
 
-    <!-- PAGE 8 -->
+    <!-- PAGE 8: Playlists -->
     <div id="page8" class="page">
         <button class="back-btn" onclick="goTo('home')">&larr; Back</button>
         <div class="page-title">Our playlists</div>
@@ -695,16 +699,17 @@
 
         <div class="playlist-block">
             <div class="playlist-label">Reminds me of you</div>
-            <iframe style="border-radius:14px" src="https://open.spotify.com/embed/playlist/PLAYLIST_ID_1?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <div id="playlist1"></div>
         </div>
 
         <div class="playlist-block">
             <div class="playlist-label">Songs we both love</div>
-            <iframe style="border-radius:14px" src="https://open.spotify.com/embed/playlist/PLAYLIST_ID_2?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <div id="playlist2"></div>
         </div>
     </div>
 
     <script>
+        // ---------- Static Starfield Generation ----------
         function generateStars(containerId, count, sizeRange, colorOpacity) {
             const el = document.getElementById(containerId);
             let shadows = [];
@@ -746,6 +751,34 @@
             window.scrollTo(0, 0);
             if (pageId === 'page7') loadNotes();
         }
+
+        // ---------- Spotify Playlist Cards (oEmbed) ----------
+        async function loadPlaylistCard(containerId, playlistUrl) {
+            if (!playlistUrl || playlistUrl.includes('YOUR_FIRST_PLAYLIST_ID')) {
+                document.getElementById(containerId).innerHTML = `<div class="media-placeholder">Playlist coming soon 🤍</div>`;
+                return;
+            }
+            try {
+                const res = await fetch(`https://open.spotify.com/oembed?url=${encodeURIComponent(playlistUrl)}`);
+                const data = await res.json();
+                document.getElementById(containerId).innerHTML = `
+                    <a href="${playlistUrl}" target="_blank" class="playlist-card">
+                        <img src="${data.thumbnail_url}" class="playlist-cover">
+                        <div class="playlist-info">
+                            <div class="playlist-name">${data.title}</div>
+                            <div class="playlist-sub">open in spotify →</div>
+                        </div>
+                    </a>`;
+            } catch (e) {
+                document.getElementById(containerId).innerHTML = `<div class="media-placeholder"><a href="${playlistUrl}" target="_blank" style="color:var(--pink);text-decoration:none;">Open Playlist on Spotify →</a></div>`;
+            }
+        }
+
+        // Reminds me of you (Add your playlist link here when ready)
+        loadPlaylistCard('playlist1', 'https://open.spotify.com/playlist/YOUR_FIRST_PLAYLIST_ID');
+        
+        // Songs we both love (Your playlist!)
+        loadPlaylistCard('playlist2', 'https://open.spotify.com/playlist/1h0sMcUv8B0dsci2OBJJZl');
 
         function getNotes() {
             try {
