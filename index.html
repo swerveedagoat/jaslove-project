@@ -23,6 +23,45 @@
         --red-light: #e63946;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Quicksand', sans-serif; }
+.peony { position: absolute; pointer-events: none; }
+
+.player2 {
+    width: 320px;
+    background: radial-gradient(circle at 50% 0%, #241f29, var(--panel) 65%);
+    border: 1px solid var(--panel-border);
+    border-radius: 22px;
+    padding: 24px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    margin: 20px auto;
+}
+.player2 .peony { top: 6px; left: 50%; transform: translateX(-50%); width: 130px; opacity: 0.55; z-index: 0; }
+.vinyl {
+    width: 92px; height: 92px; border-radius: 50%; z-index: 1;
+    background: radial-gradient(circle at center, var(--purple-soft) 0 12px, #0e0c11 13px 30px, var(--purple-soft) 31px 32px, #0e0c11 33px 44px);
+    animation: spin 6s linear infinite;
+    animation-play-state: paused;
+    border: 2px solid var(--panel-border);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+}
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.player2 .song-title { font-size: 1rem; color: var(--text); font-weight: 600; z-index: 1; }
+.player2 .song-sub { font-size: 0.75rem; color: var(--text-dim); margin-top: 2px; z-index: 1; font-style: italic; }
+.player2 .controls { display: flex; align-items: center; gap: 18px; margin-top: 4px; z-index: 1; }
+.player2 .play-btn {
+    width: 46px; height: 46px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--pink), var(--pink-soft));
+    border: none; color: #1a1418;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; cursor: pointer;
+    box-shadow: 0 4px 14px rgba(185,138,148,0.35);
+}
+.player2 .vol-icon { color: var(--text-dim); font-size: 15px; cursor: pointer; }
     
     html, body { 
         background: #06050a; 
@@ -428,6 +467,40 @@
             <h1>JASMINE'S INTERNET CORNER!!!🤍</h1>
             <p>HII PRINCESS,hope you have fun with theseee.</p>
         </header>
+        <div class="player2">
+    <svg class="peony" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="8" fill="#e8c9b8"/>
+        <g fill="#d9a0ac" opacity="0.92">
+            <ellipse cx="50" cy="34" rx="10" ry="14"/>
+            <ellipse cx="64" cy="40" rx="10" ry="14" transform="rotate(50 64 40)"/>
+            <ellipse cx="66" cy="58" rx="10" ry="14" transform="rotate(110 66 58)"/>
+            <ellipse cx="50" cy="66" rx="10" ry="14" transform="rotate(180 50 66)"/>
+            <ellipse cx="34" cy="58" rx="10" ry="14" transform="rotate(240 34 58)"/>
+            <ellipse cx="36" cy="40" rx="10" ry="14" transform="rotate(300 36 40)"/>
+        </g>
+        <g fill="#b9798a" opacity="0.85">
+            <ellipse cx="50" cy="40" rx="7" ry="9"/>
+            <ellipse cx="59" cy="45" rx="7" ry="9" transform="rotate(60 59 45)"/>
+            <ellipse cx="59" cy="55" rx="7" ry="9" transform="rotate(120 59 55)"/>
+            <ellipse cx="50" cy="60" rx="7" ry="9" transform="rotate(180 50 60)"/>
+            <ellipse cx="41" cy="55" rx="7" ry="9" transform="rotate(240 41 55)"/>
+            <ellipse cx="41" cy="45" rx="7" ry="9" transform="rotate(300 41 45)"/>
+        </g>
+        <circle cx="50" cy="50" r="6" fill="#f0d9c9"/>
+    </svg>
+    <div class="vinyl" id="vinylDisc"></div>
+    <div style="text-align:center;">
+        <div class="song-title">i love you</div>
+        <div class="song-sub">for jasmine</div>
+    </div>
+    <div class="controls">
+        <span class="vol-icon" onclick="toggleMusic()" id="volIcon">&#128266;</span>
+        <button class="play-btn" onclick="toggleMusic()" id="playBtn">&#9658;</button>
+    </div>
+    <audio id="bgMusic" loop>
+        <source src="audio/song.mp3" type="audio/mpeg">
+    </audio>
+</div>
         <div class="vault-grid">
             <div class="envelope-container" onclick="goTo('page1')">
                 <div class="envelope"></div>
@@ -856,5 +929,25 @@
             }
         }
     </script>
+    <script>
+    const bgMusic = document.getElementById('bgMusic');
+    const vinylDisc = document.getElementById('vinylDisc');
+    const playBtn = document.getElementById('playBtn');
+    const volIcon = document.getElementById('volIcon');
+
+    function toggleMusic() {
+        if (bgMusic.paused) {
+            bgMusic.play();
+            vinylDisc.style.animationPlayState = 'running';
+            playBtn.innerHTML = '&#10074;&#10074;';
+            volIcon.innerHTML = '&#128266;';
+        } else {
+            bgMusic.pause();
+            vinylDisc.style.animationPlayState = 'paused';
+            playBtn.innerHTML = '&#9658;';
+            volIcon.innerHTML = '&#128263;';
+        }
+    }
+</script>
 </body>
 </html>
