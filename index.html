@@ -929,19 +929,26 @@
             }
         }
     </script>
-  <script>
+<script>
     const bgMusic = document.getElementById('bgMusic');
     const vinylDisc = document.getElementById('vinylDisc');
     const playBtn = document.getElementById('playBtn');
     const volIcon = document.getElementById('volIcon');
     let isPlaying = false;
+    let isBusy = false;
 
     function toggleMusic() {
+        if (isBusy) return;
+        isBusy = true;
+
         if (!isPlaying) {
             isPlaying = true;
-            bgMusic.play().catch(err => {
+            bgMusic.play().then(() => {
+                isBusy = false;
+            }).catch(err => {
                 console.log('Play blocked:', err);
                 isPlaying = false;
+                isBusy = false;
             });
             vinylDisc.style.animationPlayState = 'running';
             playBtn.innerHTML = '&#10074;&#10074;';
@@ -949,6 +956,7 @@
         } else {
             isPlaying = false;
             bgMusic.pause();
+            isBusy = false;
             vinylDisc.style.animationPlayState = 'paused';
             playBtn.innerHTML = '&#9658;';
             volIcon.innerHTML = '&#128263;';
