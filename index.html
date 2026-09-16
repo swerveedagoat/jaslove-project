@@ -181,4 +181,1657 @@
                 rgba(18, 15, 25, 0.78)
             );
         backdrop-filter: blur(14px);
+        box-shadow:
+            0 14px 40px rgba(0,0,0,.35),
+            inset 0 1px 0 rgba(255,255,255,.05);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .vm-player-card::before {
+        content: "";
+        position: absolute;
+        inset: -60%;
+        background:
+            radial-gradient(
+                circle,
+                rgba(185,138,148,.13),
+                transparent 55%
+            );
+        pointer-events: none;
+    }
+
+    .vm-player-top {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .vm-icon {
+        width: 54px;
+        height: 54px;
+        flex: 0 0 54px;
+        display: grid;
+        place-items: center;
+        border-radius: 16px;
+        background:
+            linear-gradient(
+                145deg,
+                rgba(185,138,148,.28),
+                rgba(107,91,129,.32)
+            );
+        border: 1px solid rgba(255,255,255,.08);
+        font-size: 1.55rem;
+        box-shadow: 0 7px 20px rgba(0,0,0,.28);
+    }
+
+    .vm-title {
+        color: var(--text);
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-bottom: 3px;
+    }
+
+    .vm-subtitle {
+        color: var(--text-dim);
+        font-size: .82rem;
+    }
+
+    .vm-status {
+        margin-left: auto;
+        color: var(--pink);
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .vm-audio-wrap {
+        position: relative;
+        z-index: 1;
+        margin-top: 15px;
+        padding: 11px 13px;
+        border-radius: 15px;
+        background: rgba(0,0,0,.22);
+        border: 1px solid rgba(255,255,255,.06);
+    }
+
+    .vm-audio-wrap audio {
+        width: 100%;
+        display: block;
+        height: 42px;
+    }
+
+    .vm-hint {
+        position: relative;
+        z-index: 1;
+        margin-top: 9px;
+        text-align: center;
+        color: rgba(227,221,226,.58);
+        font-size: .72rem;
+    }
+
+    @media (max-width: 520px) {
+        .vm-player-card {
+            padding: 14px;
+        }
+
+        .vm-status {
+            display: none;
+        }
+    }
+
+
+    /* ---------- CATEGORY PAGE ---------- */
+
+    .page {
+        display: none;
+        width: 100%;
+        max-width: 700px;
+        flex-direction: column;
+        position: relative;
+        z-index: 2;
+    }
+
+    .page.active {
+        display: flex;
+    }
+
+    .back-btn {
+        align-self: flex-start;
+        background: rgba(26, 23, 32, 0.72);
+        backdrop-filter: blur(6px);
+        border: 2px solid var(--panel-border);
+        color: var(--text-dim);
+        padding: 8px 18px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 24px;
+        transition: all 0.25s ease;
+    }
+
+    .back-btn:hover {
+        border-color: var(--pink-soft);
+        color: var(--pink);
+    }
+
+    .page-title {
+        font-size: 1.6rem;
+        color: var(--pink);
+        margin-bottom: 6px;
+        font-weight: 600;
+        text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    }
+
+    .page-subtitle {
+        color: var(--text-dim);
+        margin-bottom: 28px;
+        font-size: 0.95rem;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+
+    #page12 .page-title {
+        color: var(--red-light);
+        text-shadow: 0 2px 14px rgba(230, 57, 70, 0.4);
+    }
+
+    #page12 .entry-card {
+        border-color: var(--red-border);
+        box-shadow: 0 0 20px rgba(139, 0, 0, 0.25);
+    }
+
+    .entry-list {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .entry-card {
+        background: rgba(26, 23, 32, 0.72);
+        backdrop-filter: blur(6px);
+        border: 2px solid var(--panel-border);
+        border-radius: 14px;
+        padding: 18px 20px;
+        transition:
+            border-color 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+    .entry-card:hover {
+        border-color: var(--purple);
+    }
+
+    .entry-text {
+        color: var(--text);
+        line-height: 1.6;
+        margin-bottom: 12px;
+        font-size: 1rem;
+    }
+
+    .entry-media {
+        margin-top: 10px;
+    }
+
+    .entry-media audio {
+        width: 100%;
+        display: block;
+    }
+
+    .media-placeholder {
+        background: #201c26;
+        border: 1px dashed var(--purple-soft);
+        border-radius: 10px;
+        padding: 14px;
+        color: var(--text-dim);
+        font-size: 0.85rem;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .sticker-placeholder {
+        width: 110px;
+        height: 110px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #201c26;
+        border: 1px dashed var(--pink-soft);
+        border-radius: 12px;
+        color: var(--text-dim);
+        font-size: 0.75rem;
+        text-align: center;
+        padding: 8px;
+        margin-top: 12px;
+    }
+
+    .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 10px;
+        margin-top: 12px;
+    }
+
+    .sticker-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 12px;
+    }
+
+
+    /* ---------- JOURNAL / NOTES PAGE ---------- */
+
+    .author-toggle {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+
+    .author-btn {
+        background: var(--panel);
+        border: 2px solid var(--panel-border);
+        color: var(--text-dim);
+        padding: 7px 18px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.85rem;
+        font-family: 'Quicksand', sans-serif;
+        transition: all 0.25s ease;
+    }
+
+    .author-btn:hover {
+        border-color: var(--purple);
+    }
+
+    .author-btn.active {
+        background: var(--purple-soft);
+        border-color: var(--purple-soft);
+        color: var(--text);
+    }
+
+    .note-author {
+        display: inline-block;
+        color: var(--pink);
+        font-weight: 700;
+        font-size: 0.78rem;
+        margin-right: 8px;
+    }
+
+    .journal-box textarea {
+        width: 100%;
+        min-height: 110px;
+        background: rgba(26, 23, 32, 0.72);
+        backdrop-filter: blur(6px);
+        border: 2px solid var(--panel-border);
+        border-radius: 12px;
+        color: var(--text);
+        padding: 14px;
+        font-size: 1rem;
+        font-family: 'Quicksand', sans-serif;
+        resize: vertical;
+        margin-bottom: 12px;
+    }
+
+    .journal-box textarea:focus {
+        outline: none;
+        border-color: var(--purple);
+    }
+
+    .save-btn {
+        background: var(--purple-soft);
+        border: none;
+        color: var(--text);
+        padding: 10px 22px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: background 0.25s ease;
+    }
+
+    .save-btn:hover {
+        background: var(--pink-soft);
+    }
+
+    .save-status {
+        display: inline-block;
+        margin-left: 12px;
+        color: var(--text-dim);
+        font-size: 0.85rem;
+    }
+
+    .notes-list {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .note-entry {
+        background: rgba(26, 23, 32, 0.72);
+        backdrop-filter: blur(6px);
+        border: 2px solid var(--panel-border);
+        border-radius: 14px;
+        padding: 14px 18px;
+    }
+
+    .note-date {
+        color: var(--purple);
+        font-size: 0.78rem;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    .note-text {
+        color: var(--text);
+        line-height: 1.5;
+        white-space: pre-wrap;
+    }
+
+
+    /* ---------- PLAYLISTS PAGE CARD STYLES ---------- */
+
+    .playlist-block {
+        margin-bottom: 30px;
+    }
+
+    .playlist-label {
+        color: var(--pink);
+        font-weight: 600;
+        margin-bottom: 10px;
+        font-size: 1rem;
+    }
+
+    .playlist-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: rgba(26, 23, 32, 0.72);
+        backdrop-filter: blur(6px);
+        border: 2px solid var(--panel-border);
+        border-radius: 16px;
+        padding: 14px 18px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+    }
+
+    .playlist-card:hover {
+        border-color: var(--pink-soft);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 22px rgba(107, 91, 129, 0.25);
+    }
+
+    .playlist-cover {
+        width: 85px;
+        height: 85px;
+        border-radius: 10px;
+        object-fit: cover;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .playlist-info {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .playlist-name {
+        color: var(--text);
+        font-size: 1.05rem;
+        font-weight: 700;
+        line-height: 1.3;
+    }
+
+    .playlist-sub {
+        color: var(--pink);
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+
+    /* ---------- STILL SPACE BACKGROUND ---------- */
+
+    .space-bg {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+        z-index: 0;
+        background: #020207;
+        pointer-events: none;
+        transition: background 0.8s ease;
+    }
+
+    body.freaky-theme .space-bg {
+        background:
+            radial-gradient(
+                circle at center,
+                #2e0509 0%,
+                #050002 100%
+            );
+    }
+
+    .stars {
+        position: absolute;
+        inset: 0;
+    }
+
+    .stars-far {
+        opacity: 0.45;
+    }
+
+    .stars-mid {
+        opacity: 0.70;
+    }
+
+    .stars-near {
+        opacity: 0.95;
+    }
+</style>
+</head>
+
+<body data-scene="home">
+
+    <div class="space-bg" id="spaceBg">
+        <div class="stars stars-far" id="starsFar"></div>
+        <div class="stars stars-mid" id="starsMid"></div>
+        <div class="stars stars-near" id="starsNear"></div>
+    </div>
+
+
+    <!-- HOME PAGE -->
+
+    <div id="home" class="page active" style="max-width:1000px;">
+
+        <header>
+            <h1>JASMINE'S INTERNET CORNER!!!🤍</h1>
+            <p>HII PRINCESS,hope you have fun with theseee.</p>
+        </header>
+
+
+        <!-- VM PLAYER -->
+
+        <div class="vm-player-card">
+
+            <div class="vm-player-top">
+
+                <div class="vm-icon">
+                    🎙️
+                </div>
+
+                <div>
+                    <div class="vm-title">
+                        i love you
+                    </div>
+                </div>
+
+                <div class="vm-status">
+                    ♡
+                </div>
+
+            </div>
+
+            <div class="vm-audio-wrap">
+
+                <audio controls preload="metadata" id="jasmineSong">
+                    <!-- Add your song file here -->
+                    <source src="" type="audio/mpeg">
+                    Your browser does not support the audio player.
+                </audio>
+
+            </div>
+
+        </div>
+
+
+        <!-- ENVELOPE GRID -->
+
+        <div class="vault-grid">
+
+            <div class="envelope-container" onclick="goTo('page1')">
+                <div class="envelope"></div>
+                <div class="envelope-label">
+                    🥱 Open when you're sleepy
+                </div>
+            </div>
+
+            <div class="envelope-container" onclick="goTo('page5')">
+                <div class="envelope"></div>
+                <div class="envelope-label">
+                    😠 Open when you're mad at me
+                </div>
+            </div>
+
+            <div class="envelope-container" onclick="goTo('page6')">
+                <div class="envelope"></div>
+                <div class="envelope-label">
+                    🥺 Open when you're sad
+                </div>
+            </div>
+
+            <div class="envelope-container" onclick="goTo('page9')">
+                <div class="envelope"></div>
+                <div class="envelope-label">
+                    🩹 Open when you want reassurance
+                </div>
+            </div>
+
+            <div class="envelope-container" onclick="goTo('page10')">
+                <div class="envelope"></div>
+                <div class="envelope-label">
+                    😰 Open when you're stressed
+                </div>
+            </div>
+
+            <div class="envelope-container" onclick="goTo('page11')">
+                <div class="envelope"></div>
+                <div class="envelope-label">
+                    🩸 Open when you're on your period
+                </div>
+            </div>
+
+            <div class="envelope-container freaky-card" onclick="goTo('page12')">
+                <div class="envelope"></div>
+                <div class="envelope-label">
+                    😏 Freaky corner (open when youre aloneee) 😉
+                </div>
+            </div>
+
+            <div class="envelope-container" onclick="goTo('page2')">
+                <div class="envelope"></div>
+                <div class="envelope-label">
+                    🎧 When you want to hear my voice
+                </div>
+            </div>
+
+            <div class="envelope-container" onclick="goTo('page3')">
+                <div class="envelope"></div>
+                <div class="envelope-label">
+                    📸 When you miss me
+                </div>
+            </div>
+
+            <div class="envelope-container" onclick="goTo('page4')">
+                <div class="envelope"></div>
+                <div class="envelope-label">
+                    ✨ When you need a total distraction
+                </div>
+            </div>
+
+            <div class="envelope-container" onclick="goTo('page7')">
+                <div class="envelope"></div>
+                <div class="envelope-label">
+                    🖋️ Leave me a little note
+                </div>
+            </div>
+
+            <div class="envelope-container" onclick="goTo('page8')">
+                <div class="envelope"></div>
+                <div class="envelope-label">
+                    🎶 Our playlists
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- PAGE 1: Sleepy -->
+
+    <div id="page1" class="page">
+
+        <button class="back-btn" onclick="goTo('home')">
+            &larr; Back
+        </button>
+
+        <div class="page-title">
+            🥱 Open when you're sleepy
+        </div>
+
+        <div class="page-subtitle">
+            better be sleeping on time,here is your knockout pill.
+        </div>
+
+        <div class="entry-list">
+
+            <div class="entry-card">
+
+                <div class="entry-text">
+                    HII.PRINCESSS,I knowwww sometimes you just cant sleep,maybe youre stressed,anxious,lost in thought,or youre here to listen to your favourite story teller and yapper..anyways,pleaseee knowww that whatever you may be going through is one terrible moment in a jar filled with amazing moments.calm down im here for you and im not going anywhere. breathe slowly  and exhale longer than you inhaled try drinking a warm glass of milk it may help. tossing and turning isnt the solution its best if you get up and do a quick activity then go back again.
+                </div>
+
+                <img src="images/sleepy.jpg"
+                     style="width: 110px; height: 110px; object-fit: contain;">
+
+                <div class="entry-media">
+                    <audio controls style="margin-top: 10px;">
+                        <source src="first-bedtime-story.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+
+            </div>
+
+            <div class="entry-card">
+
+                <div class="entry-media">
+                    <audio controls style="margin-top: 10px;">
+                        <source src="2nd-bed-time.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+
+            </div>
+
+            <div class="entry-card">
+
+                <div class="entry-media">
+                    <audio controls style="margin-top: 10px;">
+                        <source src="third-story.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- PAGE 5: Mad -->
+
+    <div id="page5" class="page">
+
+        <button class="back-btn" onclick="goTo('home')">
+            &larr; Back
+        </button>
+
+        <div class="page-title">
+            😠 Open when you're mad at me
+        </div>
+
+        <div class="page-subtitle">
+            i messed up didnt i...
+        </div>
+
+        <div class="entry-list">
+
+            <div class="entry-card">
+
+                <div class="entry-text">
+                    hehehee...hiiii my loveee,judging by the reason why im writing this i made you mad...maybe its something i didnt notice,it couldve went over my head maybe im just slow and stupid sometimes. maybe its something i said. whatever it was please tell the present me youre mad im so freaking slow.in advance, i apologise profusely for what i did,i wouldnt ever want to make you mad or upset,youre my little angel afterall.i loveeee youuuu soooo muchhh FORGIVE ME PLEASE I'LL ALWAYS FIGHT FOR YOU
+                </div>
+
+                <img src="images/mad2.jpg"
+                     style="width: 100%; border-radius: 10px;">
+
+                <div class="entry-media">
+                    <audio controls style="margin-top: 10px;">
+                        <source src="mad.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- PAGE 6: Sad -->
+
+    <div id="page6" class="page">
+
+        <button class="back-btn" onclick="goTo('home')">
+            &larr; Back
+        </button>
+
+        <div class="page-title">
+            🥺 Open when you're sad
+        </div>
+
+        <div class="page-subtitle">
+            I'm always here for you,babyyy.
+        </div>
+
+        <div class="entry-list">
+
+            <div class="entry-card">
+
+                <div class="entry-text">
+                    heyyyy thereeee,why the grumpy faceeee.sad and princess dont go well together babyyyy.there is nothing in this world that deserves your tears except obviously your family and me but other than that any situation any experince it will pass i promise you. any sad moment will be nothing when you go back and remember what happened during this year calm downnnn,breatheeee,wash your faceee,hit the present me up ask for food ask for money ask for anything and i promise ill answer.
+                </div>
+
+                <img src="images/sad2.jpg"
+                     style="width: 70%; border-radius: 10px;">
+
+                <img src="images/sad.jpg"
+                     style="width: 110px; height: 110px; object-fit: contain;">
+
+            </div>
+
+            <div class="entry-card">
+
+                <div class="entry-media">
+                    <audio controls style="margin-top: 10px;">
+                        <source src="sad.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- PAGE 9: Reassurance -->
+
+    <div id="page9" class="page">
+
+        <button class="back-btn" onclick="goTo('home')">
+            &larr; Back
+        </button>
+
+        <div class="page-title">
+            🩹 Open when you want reassurance
+        </div>
+
+        <div class="page-subtitle">
+            we're in this together,youre my one and only.
+        </div>
+
+        <div class="entry-list">
+
+            <div class="entry-card">
+
+                <div class="entry-text">
+                    greethingsss,my queeennnn.did you know black widows eat their husbands after mating. shiiii i wouldnt mind if you ate me after mateddddd. jasmineeeee,my love,my princess,my everything.please dont ever think that i would hate you,fall out of love,think about someone else,i only dearly want you.i dont want anyone else in this life, i want my kids to be as stuborn as you i want them to have your eyes i want them to be as short as you i want them to eat sushi for breakfast.i truly only love you and i will continue to show my love til the day i die and im buried next to you
+                </div>
+
+                <div class="photo-grid" style="grid-template-columns: 1fr;">
+
+                    <img src="images/us.png"
+                         style="width: 70%; border-radius: 10px;">
+
+                    <img src="images/pinky.jpg"
+                         style="width: 70%; border-radius: 10px;">
+
+                    <img src="images/pinky2.jpg"
+                         style="width: 70%; border-radius: 10px;">
+
+                </div>
+
+                <img src="images/reassure.jpg"
+                     style="width: 80%; border-radius: 10px; margin-top: 12px;">
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- PAGE 10: Stressed -->
+
+    <div id="page10" class="page">
+
+        <button class="back-btn" onclick="goTo('home')">
+            &larr; Back
+        </button>
+
+        <div class="page-title">
+            😰 Open when you're stressed
+        </div>
+
+        <div class="page-subtitle">
+            Take a deep breath.I'm here for you honey.
+        </div>
+
+        <div class="entry-list">
+
+            <div class="entry-card">
+
+                <div class="entry-text">
+                    woah woah woah there,calm downnn whats all the fuss aboutttt. its going to be alllll okay baby just breathe deeply,wash your face,call me up,let me calm you down. your stress will make you only make bad choices okay? calm down firstttt and once you do you'll find everything easier.dont hesistate to ask for my help please,even if i cant directly help you and fix it,i can be there for you, talk to you,and comfort you
+                </div>
+
+                <div class="entry-media">
+                    <audio controls style="margin-top: 10px;">
+                        <source src="stressed.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+
+                <img src="images/stressed.jpg"
+                     style="width: 110px; height: 110px; object-fit: contain;">
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- PAGE 11: Period -->
+
+    <div id="page11" class="page">
+
+        <button class="back-btn" onclick="goTo('home')">
+            &larr; Back
+        </button>
+
+        <div class="page-title">
+            🩸 Open when you're on your period
+        </div>
+
+        <div class="page-subtitle">
+            LEMME AT IT,NO ONE HURTS MY GIRL. HERES SOMETHINGS THAT SHOULD HELP BABY DONT WORRY IM HERE
+        </div>
+
+        <div class="entry-list">
+
+            <div class="entry-card">
+
+                <div class="photo-grid">
+
+                    <img src="images/honey1.png"
+                         style="width: 70%; border-radius: 10px;">
+
+                    <img src="images/honey2.jpg"
+                         style="width: 70%; border-radius: 10px;">
+
+                </div>
+
+                <div class="entry-text"
+                     style="margin-top: 14px; margin-bottom: 0;">
+                    1 cups water 1 teaspoons fresh ginger, grated 1 tablespoons honey 1 teaspoons lemon juice 1 ground cinnamon
+                </div>
+
+            </div>
+
+
+            <div class="entry-card">
+
+                <div class="photo-grid">
+
+                    <img src="images/mug1.jpg"
+                         style="width: 70%; border-radius: 10px;">
+
+                    <img src="images/mug2.jpg"
+                         style="width: 70%; border-radius: 10px;">
+
+                </div>
+
+                <div class="entry-text"
+                     style="margin-top: 14px; margin-bottom: 0;">
+                    4 tablespoons all-purpose flour 2 tablespoons sugar 2 tablespoons cocoa powder 3 tablespoons milk 2 tablespoons vegetable oil 1 tablespoons dark chocolate chips
+                </div>
+
+            </div>
+
+
+            <div class="entry-card">
+
+                <div class="sticker-grid">
+
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+
+                        <img src="images/eggs.jpg"
+                             style="width: 80px; height: 80px; object-fit: contain;">
+
+                        <span style="font-size: 0.8rem; color: var(--text-dim);">
+                            quick7-8mins boiled eggs with some toast
+                        </span>
+
+                    </div>
+
+
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+
+                        <img src="images/fruits.jpg"
+                             style="width: 80px; height: 80px; object-fit: contain;">
+
+                        <span style="font-size: 0.8rem; color: var(--text-dim);">
+                            any kinds of fruits pick up anything
+                        </span>
+
+                    </div>
+
+
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+
+                        <img src="images/yogurt.png"
+                             style="width: 80px; height: 80px; object-fit: contain;">
+
+                        <span style="font-size: 0.8rem; color: var(--text-dim);">
+                            banana/berry yogurt
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="entry-card">
+
+                <div class="entry-text"
+                     style="margin-bottom: 0;">
+
+                    FOR THE FIRST:Simmer ginger: Bring 1 cups water to a boil, add 1 teaspoons fresh ginger, grated, and let it simmer.Strain and sweeten: Strain into a mug, stir in 1 tablespoons honey and 1 teaspoons lemon juice. Finish: Sprinkle 1 ground cinnamon on top and sip while warm.<br>
+
+                    THE SECOND ONE:Mix dry ingredients: In a mug, whisk together 4 tablespoons all-purpose flour, 2 tablespoons sugar, and 2 tablespoons cocoa powder. Add wet ingredients: Stir in 3 tablespoons milk and 2 tablespoons vegetable oil until smooth, then fold in 1 tablespoons dark chocolate chips. Microwave: Microwave on high until just set in the middle.<br>
+
+                    do some stretches too theyre very simple like: CAT COW POSE - CHILD POSE LEGS UP THE WALL -BOUND ANGEL POSE
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- PAGE 12: Freaky corner -->
+
+    <div id="page12" class="page">
+
+        <button class="back-btn" onclick="goTo('home')">
+            &larr; Back
+        </button>
+
+        <div class="page-title">
+            😏 Freaky corner (open when youre aloneee) 😉
+        </div>
+
+        <div class="page-subtitle">
+            make sure nobody is looking over your shoulder...
+        </div>
+
+        <div class="entry-list">
+
+            <div class="entry-card">
+
+                <div class="entry-text">
+                    heyyyyyyy babbyyyyy,watchuuu doinnn hereeee,hehhehehee,all yours,just you,dont ever doubt it.
+                </div>
+
+                <div class="photo-grid">
+
+                    <img src="images/gym1.jpg" style="width: 70%; border-radius: 10px;">
+                    <img src="images/gym2.jpg" style="width: 70%; border-radius: 10px;">
+                    <img src="images/gym3.jpg" style="width: 70%; border-radius: 10px;">
+                    <img src="images/gym4.jpg" style="width: 70%; border-radius: 10px;">
+                    <img src="images/gym5.jpg" style="width: 70%; border-radius: 10px;">
+                    <img src="images/gym6.jpg" style="width: 70%; border-radius: 10px;">
+                    <img src="images/gym7.jpg" style="width: 70%; border-radius: 10px;">
+                    <img src="images/gym8.jpg" style="width: 70%; border-radius: 10px;">
+                    <img src="images/gym9.jpg" style="width: 70%; border-radius: 10px;">
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- PAGE 2: Hear my voice -->
+
+    <div id="page2" class="page">
+
+        <button class="back-btn" onclick="goTo('home')">
+            &larr; Back
+        </button>
+
+        <div class="page-title">
+            When you want to hear my voice
+        </div>
+
+        <div class="page-subtitle">
+            Someee randommm vmssss
+        </div>
+
+        <div class="entry-list">
+
+            <div class="entry-card">
+
+                <div class="entry-text">
+                    text1
+                </div>
+
+                <div class="entry-media">
+                    <audio controls>
+                        <source src="" type="audio/mpeg">
+                    </audio>
+                </div>
+
+            </div>
+
+
+            <div class="entry-card">
+
+                <div class="entry-text">
+                    text2
+                </div>
+
+                <div class="entry-media">
+                    <audio controls>
+                        <source src="" type="audio/mpeg">
+                    </audio>
+                </div>
+
+            </div>
+
+
+            <div class="entry-card">
+
+                <div class="entry-text">
+                    text3
+                </div>
+
+                <div class="entry-media">
+                    <audio controls>
+                        <source src="" type="audio/mpeg">
+                    </audio>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- PAGE 3: When you miss me -->
+
+    <div id="page3" class="page">
+
+        <button class="back-btn" onclick="goTo('home')">
+            &larr; Back
+        </button>
+
+        <div class="page-title">
+            When you miss me
+        </div>
+
+        <div class="page-subtitle">
+            someeee pictures of meee and usss (i hope to keep updating this)
+        </div>
+
+        <div class="entry-list">
+
+            <div class="entry-card">
+
+                <div class="entry-text">
+                    kid me
+                </div>
+
+                <div class="entry-media">
+                    <img src="images/kid1.jpg"
+                         style="width: 60%; border-radius: 10px;">
+                </div>
+
+            </div>
+
+
+            <div class="entry-card">
+
+                <div class="entry-text">
+                    another kid me
+                </div>
+
+                <div class="entry-media">
+                    <img src="images/kid2.jpg"
+                         style="width: 60%; border-radius: 10px;">
+                </div>
+
+            </div>
+
+
+            <div class="entry-card">
+
+                <div class="entry-text">
+                    some stupid shit
+                </div>
+
+                <div class="entry-media">
+                    <img src="images/stupidshit.jpg"
+                         style="width: 60%; border-radius: 10px;">
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- PAGE 4: Distraction -->
+
+    <div id="page4" class="page">
+
+        <button class="back-btn" onclick="goTo('home')">
+            &larr; Back
+        </button>
+
+        <div class="page-title">
+            toooo remember why i love youuuu
+        </div>
+
+        <div class="page-subtitle">
+            each is uniqueee so choose whichever
+        </div>
+
+        <div class="entry-list">
+
+            <div class="entry-card">
+                <div class="entry-text">
+                    haiiiiiii,my strong independent woman,i hope youre doing your best as always.i never told you this but when we started talking i was actually mean becuase i was nervous around you and didnt know how to talk but when you told me keep shooting my shots and that i talked to you like my guy friend i had to lock in and become the romantic man you know nowww.i was also really into your laugh it always made me smile too. i love youuuu a million timessss
+                </div>
+            </div>
+
+            <div class="entry-card">
+                <div class="entry-text">
+                    i never thought i'd end up with someone who is loving as you.i truly am and i mean it i am grateful for you,your existence has made a great impact on my life a very positive. without you maybe i wouldnt have been as excited for my future. thank you my princesssss i love you to the moon and back
+                </div>
+            </div>
+
+            <div class="entry-card">
+                <div class="entry-text">
+                    what if i one day just show up to your house lowk....you'll hit me and prob tell me to go home. our dyanamic would've been so good if we lived close to each other...ofc maybe i would've been asian but...okay maybe thats not the best scenario. i will work my ass for you my honeybun we WILLLLL MAKE THISSS WORKKKK. let us do this for our kids so that one day we can read them our story instead of a magical princess story.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- PAGE 7: Journal / Notes -->
+
+    <div id="page7" class="page">
+
+        <button class="back-btn" onclick="goTo('home')">
+            &larr; Back
+        </button>
+
+        <div class="page-title">
+            Leave me a little note
+        </div>
+
+        <div class="page-subtitle">
+            SPEAK YOUR MIND TO MEEE. i'll be here too dww
+        </div>
+
+        <div class="journal-box">
+
+            <div class="author-toggle" id="authorToggle">
+
+                <button
+                    type="button"
+                    class="author-btn active"
+                    data-author="Mostafa"
+                    onclick="setAuthor('Mostafa')">
+                    Mostafa
+                </button>
+
+                <button
+                    type="button"
+                    class="author-btn"
+                    data-author="Jasmine"
+                    onclick="setAuthor('Jasmine')">
+                    Jasmine
+                </button>
+
+            </div>
+
+            <textarea
+                id="journalInput"
+                placeholder="Type something..."></textarea>
+
+            <button class="save-btn" onclick="saveNote()">
+                Save note
+            </button>
+
+            <span class="save-status" id="saveStatus"></span>
+
+        </div>
+
+        <div class="notes-list" id="notesList"></div>
+
+    </div>
+
+
+    <!-- PAGE 8: Playlists -->
+
+    <div id="page8" class="page">
+
+        <button class="back-btn" onclick="goTo('home')">
+            &larr; Back
+        </button>
+
+        <div class="page-title">
+            Our playlists
+        </div>
+
+        <div class="page-subtitle">
+            perfect pair
+        </div>
+
+        <div class="playlist-block">
+
+            <div class="playlist-label">
+                Reminds me of you
+            </div>
+
+            <div id="playlist1"></div>
+
+        </div>
+
+        <div class="playlist-block">
+
+            <div class="playlist-label">
+                Songs we both love
+            </div>
+
+            <div id="playlist2"></div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // ---------- Static Starfield Generation ----------
+
+        function generateStars(
+            containerId,
+            count,
+            sizeRange,
+            colorOpacity
+        ) {
+
+            const el = document.getElementById(containerId);
+
+            let shadows = [];
+
+            for (let i = 0; i < count; i++) {
+
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+
+                const size =
+                    (
+                        Math.random() *
+                        (sizeRange[1] - sizeRange[0]) +
+                        sizeRange[0]
+                    ).toFixed(1);
+
+                shadows.push(
+                    `${x}vw ${y}vh 0 ${size}px rgba(255,255,255,${colorOpacity})`
+                );
+            }
+
+            el.style.boxShadow = shadows.join(',');
+            el.style.width = '2px';
+            el.style.height = '2px';
+            el.style.background = 'transparent';
+            el.style.borderRadius = '50%';
+        }
+
+        generateStars(
+            'starsFar',
+            120,
+            [0.4, 0.9],
+            0.5
+        );
+
+        generateStars(
+            'starsMid',
+            80,
+            [0.8, 1.4],
+            0.7
+        );
+
+        generateStars(
+            'starsNear',
+            45,
+            [1.2, 2.2],
+            0.95
+        );
+
+
+        let currentAuthor = 'Mostafa';
+
+
+        function setAuthor(name) {
+
+            currentAuthor = name;
+
+            document
+                .querySelectorAll('.author-btn')
+                .forEach(btn => {
+
+                    btn.classList.toggle(
+                        'active',
+                        btn.dataset.author === name
+                    );
+
+                });
+        }
+
+
+        function goTo(pageId) {
+
+            document
+                .querySelectorAll('.page')
+                .forEach(p =>
+                    p.classList.remove('active')
+                );
+
+            document
+                .getElementById(pageId)
+                .classList.add('active');
+
+
+            if (pageId === 'page12') {
+
+                document.body.classList.add(
+                    'freaky-theme'
+                );
+
+            } else {
+
+                document.body.classList.remove(
+                    'freaky-theme'
+                );
+            }
+
+
+            window.scrollTo(0, 0);
+
+
+            if (pageId === 'page7') {
+                loadNotes();
+            }
+        }
+
+
+        // ---------- Spotify Playlist Cards (oEmbed) ----------
+
+        async function loadPlaylistCard(
+            containerId,
+            playlistUrl
+        ) {
+
+            if (
+                !playlistUrl ||
+                playlistUrl.includes(
+                    'YOUR_FIRST_PLAYLIST_ID'
+                )
+            ) {
+
+                document
+                    .getElementById(containerId)
+                    .innerHTML =
+                    `<div class="media-placeholder">
+                        Playlist coming soon 🤍
+                    </div>`;
+
+                return;
+            }
+
+
+            try {
+
+                const res = await fetch(
+                    `https://open.spotify.com/oembed?url=${encodeURIComponent(playlistUrl)}`
+                );
+
+                const data = await res.json();
+
+
+                document
+                    .getElementById(containerId)
+                    .innerHTML = `
+
+                    <a
+                        href="${playlistUrl}"
+                        target="_blank"
+                        class="playlist-card">
+
+                        <img
+                            src="${data.thumbnail_url}"
+                            class="playlist-cover">
+
+                        <div class="playlist-info">
+
+                            <div class="playlist-name">
+                                ${data.title}
+                            </div>
+
+                            <div class="playlist-sub">
+                                open in spotify →
+                            </div>
+
+                        </div>
+
+                    </a>
+                `;
+
+            } catch (e) {
+
+                document
+                    .getElementById(containerId)
+                    .innerHTML =
+
+                    `<div class="media-placeholder">
+
+                        <a
+                            href="${playlistUrl}"
+                            target="_blank"
+                            style="
+                                color:var(--pink);
+                                text-decoration:none;
+                            ">
+
+                            Open Playlist on Spotify →
+
+                        </a>
+
+                    </div>`;
+            }
+        }
+
+
+        // Reminds me of you
+        loadPlaylistCard(
+            'playlist1',
+            'https://open.spotify.com/playlist/YOUR_FIRST_PLAYLIST_ID'
+        );
+
+
+        // Songs we both love
+        loadPlaylistCard(
+            'playlist2',
+            'https://open.spotify.com/playlist/1h0sMcUv8B0dsci2OBJJZl'
+        );
+
+
+        function getNotes() {
+
+            try {
+
+                const raw =
+                    localStorage.getItem(
+                        'open-when-journal-notes'
+                    );
+
+                return raw
+                    ? JSON.parse(raw)
+                    : [];
+
+            } catch (err) {
+
+                return [];
+            }
+        }
+
+
+        function loadNotes() {
+
+            renderNotes(getNotes());
+        }
+
+
+        function renderNotes(notes) {
+
+            const listEl =
+                document.getElementById(
+                    'notesList'
+                );
+
+            listEl.innerHTML = '';
+
+
+            notes
+                .slice()
+                .reverse()
+                .forEach(note => {
+
+                    const card =
+                        document.createElement(
+                            'div'
+                        );
+
+                    card.className =
+                        'note-entry';
+
+
+                    const dateEl =
+                        document.createElement(
+                            'div'
+                        );
+
+                    dateEl.className =
+                        'note-date';
+
+
+                    const authorSpan =
+                        document.createElement(
+                            'span'
+                        );
+
+                    authorSpan.className =
+                        'note-author';
+
+                    authorSpan.textContent =
+                        note.author || '';
+
+
+                    dateEl.appendChild(
+                        authorSpan
+                    );
+
+                    dateEl.appendChild(
+                        document.createTextNode(
+                            note.date
+                        )
+                    );
+
+
+                    const textEl =
+                        document.createElement(
+                            'div'
+                        );
+
+                    textEl.className =
+                        'note-text';
+
+                    textEl.textContent =
+                        note.text;
+
+
+                    card.appendChild(dateEl);
+
+                    card.appendChild(textEl);
+
+                    listEl.appendChild(card);
+                });
+        }
+
+
+        function saveNote() {
+
+            const input =
+                document.getElementById(
+                    'journalInput'
+                );
+
+            const statusEl =
+                document.getElementById(
+                    'saveStatus'
+                );
+
+            const text =
+                input.value.trim();
+
+
+            if (!text) return;
+
+
+            try {
+
+                const notes = getNotes();
+
+
+                notes.push({
+
+                    text: text,
+
+                    author: currentAuthor,
+
+                    date:
+                        new Date().toLocaleString(
+                            undefined,
+                            {
+                                dateStyle: 'medium',
+                                timeStyle: 'short'
+                            }
+                        )
+                });
+
+
+                localStorage.setItem(
+                    'open-when-journal-notes',
+                    JSON.stringify(notes)
+                );
+
+
+                input.value = '';
+
+                statusEl.textContent =
+                    'Saved 🤍';
+
+
+                renderNotes(notes);
+
+
+                setTimeout(() => {
+
+                    statusEl.textContent = '';
+
+                }, 2000);
+
+
+            } catch (err) {
+
+                statusEl.textContent =
+                    'Could not save — try again';
+            }
+        }
+
+    </script>
+
+</body>
+</html>
 ```
