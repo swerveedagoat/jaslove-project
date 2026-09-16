@@ -929,19 +929,25 @@
             }
         }
     </script>
-    <script>
+  <script>
     const bgMusic = document.getElementById('bgMusic');
     const vinylDisc = document.getElementById('vinylDisc');
     const playBtn = document.getElementById('playBtn');
     const volIcon = document.getElementById('volIcon');
+    let isPlaying = false;
 
     function toggleMusic() {
-        if (bgMusic.paused) {
-            bgMusic.play();
+        if (!isPlaying) {
+            isPlaying = true;
+            bgMusic.play().catch(err => {
+                console.log('Play blocked:', err);
+                isPlaying = false;
+            });
             vinylDisc.style.animationPlayState = 'running';
             playBtn.innerHTML = '&#10074;&#10074;';
             volIcon.innerHTML = '&#128266;';
         } else {
+            isPlaying = false;
             bgMusic.pause();
             vinylDisc.style.animationPlayState = 'paused';
             playBtn.innerHTML = '&#9658;';
