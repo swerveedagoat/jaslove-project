@@ -467,27 +467,7 @@
             <h1>JASMINE'S INTERNET CORNER!!!🤍</h1>
             <p>HII PRINCESS,hope you have fun with theseee.</p>
         </header>
-        <div class="player2">
-    <svg class="peony" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="8" fill="#e8c9b8"/>
-        <g fill="#d9a0ac" opacity="0.92">
-            <ellipse cx="50" cy="34" rx="10" ry="14"/>
-            <ellipse cx="64" cy="40" rx="10" ry="14" transform="rotate(50 64 40)"/>
-            <ellipse cx="66" cy="58" rx="10" ry="14" transform="rotate(110 66 58)"/>
-            <ellipse cx="50" cy="66" rx="10" ry="14" transform="rotate(180 50 66)"/>
-            <ellipse cx="34" cy="58" rx="10" ry="14" transform="rotate(240 34 58)"/>
-            <ellipse cx="36" cy="40" rx="10" ry="14" transform="rotate(300 36 40)"/>
-        </g>
-        <g fill="#b9798a" opacity="0.85">
-            <ellipse cx="50" cy="40" rx="7" ry="9"/>
-            <ellipse cx="59" cy="45" rx="7" ry="9" transform="rotate(60 59 45)"/>
-            <ellipse cx="59" cy="55" rx="7" ry="9" transform="rotate(120 59 55)"/>
-            <ellipse cx="50" cy="60" rx="7" ry="9" transform="rotate(180 50 60)"/>
-            <ellipse cx="41" cy="55" rx="7" ry="9" transform="rotate(240 41 55)"/>
-            <ellipse cx="41" cy="45" rx="7" ry="9" transform="rotate(300 41 45)"/>
-        </g>
-        <circle cx="50" cy="50" r="6" fill="#f0d9c9"/>
-    </svg>
+       <div class="player2">
     <div class="vinyl" id="vinylDisc"></div>
     <div style="text-align:center;">
         <div class="song-title">i love you</div>
@@ -935,31 +915,20 @@
     const playBtn = document.getElementById('playBtn');
     const volIcon = document.getElementById('volIcon');
     let isPlaying = false;
-    let isBusy = false;
 
     function toggleMusic() {
-        if (isBusy) return;
-        isBusy = true;
-
-        if (!isPlaying) {
-            isPlaying = true;
-            bgMusic.play().then(() => {
-                isBusy = false;
-            }).catch(err => {
-                console.log('Play blocked:', err);
-                isPlaying = false;
-                isBusy = false;
-            });
-            vinylDisc.style.animationPlayState = 'running';
-            playBtn.innerHTML = '&#10074;&#10074;';
-            volIcon.innerHTML = '&#128266;';
-        } else {
-            isPlaying = false;
+        if (isPlaying) {
             bgMusic.pause();
-            isBusy = false;
             vinylDisc.style.animationPlayState = 'paused';
             playBtn.innerHTML = '&#9658;';
             volIcon.innerHTML = '&#128263;';
+            isPlaying = false;
+        } else {
+            bgMusic.play();
+            vinylDisc.style.animationPlayState = 'running';
+            playBtn.innerHTML = '&#10074;&#10074;';
+            volIcon.innerHTML = '&#128266;';
+            isPlaying = true;
         }
     }
 </script>
